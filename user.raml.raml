@@ -1,0 +1,94 @@
+#%RAML 1.0
+version: v1
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/e73622d0-ea9d-4965-b32f-c698ea638613/ # 
+title: user
+resourceTypes:
+  collection:
+    description: collection of all users available <<resourcePathName>> in users
+  get:
+    description: Get the list of <<resourcePathName>>
+    responses:
+      200:
+       body:
+        application/json:
+          example: |
+           [user:
+           {"id":1,
+           "first":"Adam",
+           "last":"Bob",
+           "department":"IIB"}]
+        400:
+          body:
+            application/json:
+              example:
+                {"message": "Error happed, put correct info"}
+    
+  post:
+    description: Add a new <<resourcePathName|!singularize>> to users
+    responses:
+      200:
+       body:
+        application/json:
+          example: |
+           [user:
+           {"id":1,
+           "first":"Adam",
+           "last":"Bob",
+           "department":"IIB"}]
+       400:
+          body:
+            application/json:
+              example: 
+               {"message": "attent not successful,please try again"}
+  put:
+     description: update<<resourcePathName|!singularize>> depend on the specified user
+     responses:
+       200:
+          body:
+            application/json:
+              example: |
+                {"message":"user is updated"}]
+       400:
+          body:
+            application/json:
+              example: 
+               {"message": "Error happed,please try again"}
+  resourceType:
+    collection-item: entity representing <<resourcePathName|!singularize>>
+    get:
+      description: get the <<resourcePathName|!singularize>>with <<resourcePathName|!singularize>>Id={<<resourcePathName|!singularize>>}
+      responses:
+        200:
+          body:
+            application/json:
+            example: |
+             [user:
+              {"id":1,
+              "first":"Adam",
+               "last":"Bob",
+               "department":"IIB"}] 
+        400:
+          body:
+            application/json:
+              example: 
+               {"message": "<<resourcePathName|!singularize>> not found"} 
+    put:
+     description: update<<resourcePathName|!singularize>> depend on the specified user
+     responses:
+       200:
+          body:
+            application/json:
+              example: |
+                {"message":"user is updated"}]
+       400:
+          body:
+            application/json:
+              example: 
+               {"message": "Error happed,please try again"}             
+  /user:
+    type:
+      collection:
+  /{resourceId}:
+    type:
+      collection:
+        
